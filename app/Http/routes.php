@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'blog-post'], function () {
+    Route::get('/{id}', function () {
+        return view('blog-post');
+    });
+});

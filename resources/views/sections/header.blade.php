@@ -1,5 +1,5 @@
 <!-- Page Header - litle-header or bigger-header - soft-header, dark-header or background -->
-<section id="page-header" class="background49 parallax xdark-bg big-header">
+<section id="page-header" class="background{{ $image }} parallax xdark-bg big-header">
     <!-- Page Header Inner -->
     <div class="page_header_inner clearfix white">
         <!-- Left -->

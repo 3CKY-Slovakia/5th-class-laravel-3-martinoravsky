@@ -56,9 +56,9 @@
 
     @include('sections.navigation')
 
-    @include('sections.header')
+    @include('sections.header', ['image' => '49'])
 
-    @include('sections.portfolio')
+    @yield('content')
 
     @include('sections.footer')
 
@@ -94,8 +94,6 @@
     <script type="text/javascript" src="js/plugins.js"></script>
     <!-- Portfolio Plugins -->
     <script type="text/javascript" src="js/masonry-blog.js"></script>
-    <!-- Theme Panel -->
-    <script type="text/javascript" src="theme_panel/themepanel-sub.js"></script>
     <!-- End JS Files -->
 
     <script>
