@@ -15,6 +15,7 @@
   3.1 Priecinok C:/wamp/vhosts <br>
   3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony) <br>
   3.3 Vlozenie:
+	{{#markdown}}
 	```
 	  <VirtualHost *:80>
 		ServerName laravel1.dev
@@ -24,6 +25,7 @@
 		</directory>
 	  </VirtualHost>
 	```
+	{{/markdown}}
 4. Vytvorenie projektu: <br>
   4.1 PhpStorm -> New project -> Project type = Composer project <br>
   4.2 Filter packages = laravel/laravel; Version to install = default; Path to PHP executables = C:\wamp\bin\php\php5.5.12\php.exe (pripadne ina verzia PHP v priecinku pod C:\wamp\bin\php\) <br>
