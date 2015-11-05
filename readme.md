@@ -16,8 +16,8 @@
   3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony) <br>
   3.3 Vlozenie:
 	```
-	  <VirtualHost *:80><br >
-		ServerName laravel1.dev
+	  <VirtualHost *:80>
+	  ServerName laravel1.dev
 		DocumentRoot c:/wamp/www/laravel1/public
 		<Directory c:/wamp/www/laravel1/public>
 			AllowOverride all
