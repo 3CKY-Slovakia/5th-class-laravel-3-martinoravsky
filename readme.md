@@ -15,7 +15,7 @@
   3.1 Priecinok C:/wamp/vhosts <br>
   3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony) <br>
   3.3 Vlozenie: <br>
-  ...
+  ...php
   <VirtualHost *:80>
   	ServerName laravel1.dev
   	DocumentRoot c:/wamp/www/laravel1/public
@@ -37,7 +37,7 @@
   3.3 Pri logine a registracii vyuzite master.blade layout <br>
   3.4 Odchytavajte chybove hlasky. <br>
   Snippet: <br>
-  ...
+  ...php
   	@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<strong></strong> There were some problems with your input.<br><br>
