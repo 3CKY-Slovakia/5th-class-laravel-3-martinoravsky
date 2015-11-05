@@ -16,13 +16,13 @@
   3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony) <br>
   3.3 Vlozenie:
 	```
-	  <VirtualHost *:80>
-	  ServerName laravel1.dev
-		DocumentRoot c:/wamp/www/laravel1/public
-		<Directory c:/wamp/www/laravel1/public>
-			AllowOverride all
-		</directory>
-	  </VirtualHost>
+	      <VirtualHost *:80>
+	      ServerName laravel1.dev
+		    DocumentRoot c:/wamp/www/laravel1/public
+		    <Directory c:/wamp/www/laravel1/public>
+			    AllowOverride all
+		    </directory>
+	      </VirtualHost>
 	```
 4. Vytvorenie projektu: <br>
   4.1 PhpStorm -> New project -> Project type = Composer project <br>
