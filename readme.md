@@ -14,8 +14,8 @@
 3. Nastavenie vhost vo WAMP: <br>
   3.1 Priecinok C:/wamp/vhosts <br>
   3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony) <br>
-  3.3 Vlozenie: <br> <br>
-	...
+  3.3 Vlozenie:
+	```
 	  <VirtualHost *:80>
 		ServerName laravel1.dev
 		DocumentRoot c:/wamp/www/laravel1/public
@@ -23,9 +23,7 @@
 			AllowOverride all
 		</directory>
 	  </VirtualHost>
-	...
-
- <br> <br>
+	```
 4. Vytvorenie projektu: <br>
   4.1 PhpStorm -> New project -> Project type = Composer project <br>
   4.2 Filter packages = laravel/laravel; Version to install = default; Path to PHP executables = C:\wamp\bin\php\php5.5.12\php.exe (pripadne ina verzia PHP v priecinku pod C:\wamp\bin\php\) <br>
@@ -39,8 +37,7 @@
   3.3 Pri logine a registracii vyuzite master.blade layout <br>
   3.4 Odchytavajte chybove hlasky. <br>
   Snippet: <br>
-   <br> <br>
-	...
+	```
 	  @if (count($errors) > 0)
 		<div class="alert alert-danger">
 			<strong>There were some problems with your input.</strong>
@@ -52,8 +49,7 @@
 			</ul>
 		</div>
 	@endif
-	...
-   <br> <br>
+	```
   3.5 Na adrese localhost/phpmyadmin vytvorte novu databazu <br>
   3.6 Na rovnakom webe vytvorte noveho pouzivatela s globalnymi pravami (pozor, host zmente z defaultneho '%' na 'localhost') <br>
   3.7 V .env subore nastavte pristup k databaze
