@@ -1,27 +1,54 @@
-## Laravel PHP Framework
+# Introduction to Laravel
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+##Podmienky:
+1. nainstalovany web server
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+##Instalacia:
+1. [Composer](https://getcomposer.org/)
+2. Nastavenie host:
+  2.1 Spustenie textoveho editora (right click -> run ad Admin)
+  2.2 Priecinok C:/Windows/System 32/drivers/etc/
+  2.3 Selekcia vsetkych suborov, nie iba txt (priamo nad tlacidlom Open)
+  2.4 Otvorenie hosts
+  2.5 Na konci dokumentu pridajte 127.0.0.1		vasNazov.dev
+3. Nastavenie vhost vo WAMP:
+  3.1 Priecinok C:/wamp/vhosts
+  3.2 Vytvorenie noveho suboru vasNazov (bez akejkolvek pripony)
+  3.3 Vlozenie:
+  ...
+  <VirtualHost *:80>
+  	ServerName laravel1.dev
+  	DocumentRoot c:/wamp/www/laravel1/public
+  	<Directory c:/wamp/www/laravel1/public>
+  	  AllowOverride all
+  	</directory>
+  </VirtualHost>
+  ...
+4. Vytvorenie projektu:
+  4.1 PhpStorm -> New project -> Project type = Composer project
+  4.2 Filter packages = laravel/laravel; Version to install = default; Path to PHP executables = C:\wamp\bin\php\php5.5.12\php.exe (pripadne ina verzia PHP v priecinku pod C:\wamp\bin\php\)
+5. Mozte pracovat ;)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+#Homework
+1. Stiahnite si tento repositar
+2. Vytvorte login, registration, a logout funkcionalitu
+  2.1 Nastavte routes podla [Laravel dokumentacie k autentifikacii](http://laravel.com/docs/5.1/authentication)
+  2.2 Podla rovnakeho dokumentu vytvorte views pre login a registraciu
+  3.3 Pri logine a registracii vyuzite master.blade layout
+  3.4 Odchytavajte chybove hlasky.
+  Snippet:
+  ...
+  	@if (count($errors) > 0)
+			<div class="alert alert-danger">
+				<strong></strong> There were some problems with your input.<br><br>
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
+  ...
+  3.5 Na adrese localhost/phpmyadmin vytvorte novu databazu
+  3.6 Na rovnakom webe vytvorte noveho pouzivatela s globalnymi pravami (pozor, host zmente z defaultneho '%' na 'localhost')
+  3.7 V .env subore nastavte pristup k databaze
