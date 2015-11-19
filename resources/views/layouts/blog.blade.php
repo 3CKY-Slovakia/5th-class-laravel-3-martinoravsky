@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/backgrounds.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/summernote-0.6.16-dist/dist/summernote.css') }}" />
     <!-- End Page Styles -->
 
     <!-- Page Layout Color, night or dark -->
@@ -87,6 +88,7 @@
 <script type="text/javascript" src="{{ asset('js/skrollr.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.fitvids.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.mb.YTPlayer.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/summernote-0.6.16-dist/dist/summernote.js') }}"></script>
 <!-- Contact Form -->
 <script type="text/javascript" src="{{ asset('js/jquery.validate.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/contact-form.js') }}"></script>
@@ -99,6 +101,9 @@
 <script type="text/javascript" src="{{ asset('js/portfolio.js') }}"></script>
 <!-- End JS Files -->
 
+<!-- MASTER JS -->
+<script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
+
 <script>
     $(document).ready(function() {
         $('#latest_tweets').tweecool({
@@ -106,6 +111,26 @@
         });
     });
 </script>
+
+<!-- GRITTER -->
+@if(count($errors) > 0)
+    <script>
+        @foreach ($errors->all() as $error)
+        $.gritter.add({
+            title: 'Something went wrong!',
+            text: '{{ $error }}'
+        });
+        @endforeach
+    </script>
+@endif
+@if(Session::has('message'))
+    <script>
+        $.gritter.add({
+            title: 'This is a notice!',
+            text: '{{ Session::get('message') }}'
+        });
+    </script>
+@endif
 
 
 </body>

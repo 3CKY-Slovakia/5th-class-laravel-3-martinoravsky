@@ -865,7 +865,7 @@ BACK TO TOP BUTTON
 
 /* ==============================================
 BLOG DATES FOR MOBILE
-=============================================== */ 
+=============================================== */
 
     $('#blog .post').each(function(){
         var newPosition = $(this).find('.post-header');

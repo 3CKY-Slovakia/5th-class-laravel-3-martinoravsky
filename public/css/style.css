@@ -8335,7 +8335,10 @@
 		opacity: 1;
 	}
 
-
+/* CONTENT SECTION */
+#content{
+    padding: 60px 0 60px 0;
+}
 
 
 

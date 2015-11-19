@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Crexis Multipurpose One/Multi Page HTML Theme</title>
+    <title>STI Blog</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--Favicon -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/settings-ie8.css" />
     <link rel="stylesheet" href="css/settings.css" />
+    <link rel="stylesheet" href="js/gritter/css/jquery.gritter.css" />
     <!-- Page Styles -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/backgrounds.css" />
@@ -58,7 +59,9 @@
 
     @include('sections.header', ['image' => '49'])
 
-    @yield('content')
+    <section id="content">
+        @yield('content')
+    </section>
 
     @include('sections.footer')
 
@@ -80,6 +83,7 @@
     <script type="text/javascript" src="js/skrollr.min.js"></script>
     <script type="text/javascript" src="js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="js/jquery.mb.YTPlayer.js"></script>
+    <script type="text/javascript" src="js/gritter/js/jquery.gritter.js"></script>
     <!-- Revolution Slider -->
     <script type="text/javascript" src="js/rev_slider/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="js/rev_slider/jquery.themepunch.tools.min.js"></script>
@@ -104,6 +108,18 @@
         });
     </script>
 
+    <!-- GRITTER -->
+    @if (count($errors) > 0)
+        <script>
+            @foreach ($errors->all() as $error)
+                $.gritter.add({
+                    title: 'Something went wrong!',
+                    text: '{{ $error }}'
+                });
+                console.log('error');
+            @endforeach
+        </script>
+    @endif
 
 </body>
 <!-- Body End -->
