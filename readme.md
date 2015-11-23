@@ -1,6 +1,6 @@
 # Introduction to Laravel
 
-##Aktualna uloha je:
+##Aktualna uloha:
 
     1. zistit clankov vlastni konkretny uzivatel
         1.1 v modely User (app/User.php) vytvorit metodu, ktora spocita Auth:user()->numberOfArticles()
