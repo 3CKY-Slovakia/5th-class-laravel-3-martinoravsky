@@ -7,7 +7,7 @@
 
 
 
-        @if(Auth::user()->isOwner($article->id))
+        @if(!Auth::guest() AND Auth::user()->isOwner($article->id))
             <a href="{{ url('article/edit/'.$article->id) }}" class="btn btn-warning pull-right">
                 <i class="fa fa-pencil"></i>
                 Edit Article
