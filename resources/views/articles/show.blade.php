@@ -12,9 +12,16 @@
                 <i class="fa fa-pencil"></i>
                 Edit Article
             </a>
-        @endif
+        <br><br>
+            <a href="{{ url('article/delete/'.$article->id) }}" class="btn btn-warning pull-right">
+                <i class="fa fa-pencil"></i>
+                Delete Article
+            </a>
 
-        <!-- Posts -->
+            @endif
+
+
+            <!-- Posts -->
         <div class="posts pl-00 pr-10 mt-90">
 
             <!-- Post -->

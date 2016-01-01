@@ -29,12 +29,19 @@
                     </li>
 
                     <li>
-                        <a href="#">Bloggers</a>
+                        <a href="{{url('user/bloggers')}}">Bloggers</a>
                     </li>
 
+                    @if(Auth::user())
                     <li>
                         <a href="{{ url('article/create') }}"><i class="fa fa-plus"></i> Article</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('article/unpublished') }}">Unpublished articles</a>
+                    </li>
+
+                    @endif
 
                     <li class="dropdown-toggle nav-toggle"><a href="#" class="tahoma"><i class="fa fa-user"></i> My account</a>
                         <!-- DropDown Menu -->

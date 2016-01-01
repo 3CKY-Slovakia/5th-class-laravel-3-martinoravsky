@@ -26,7 +26,6 @@ Route::get('home', function () {
 });
 
 
-//routes
 /**
  * BLOG
  */
@@ -65,9 +64,42 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'article'], function () {
     Route::get('/', 'ArticlesController@index');
     Route::get('show/{id}', 'ArticlesController@show');
-    Route::get('create', 'ArticlesController@create');
+    Route::get('delete/{id}', 'ArticlesController@destroy');
     Route::get('edit/{id}', 'ArticlesController@edit');
+    Route::get('publish/{id}', 'ArticlesController@publish');
 
-    Route::post('store', 'ArticlesController@store');
+    /**
+     * SHOW UNPUBLISHED ARTICLES WHEN ADMIN
+     */
+    Route::group(['middleware' => ['unpublished']], function() {
+        Route::get('unpublished', function () {
+            return view('articles/unpublished', [
+                'articles' => \App\Article::orderBy('created_at', 'desc')->get()
+            ]);
+        });
+    });
+
+    Route::get('create','ArticlesController@create');
+    Route::post('store','ArticlesController@store');
+
     Route::post('update/{id}', 'ArticlesController@update');
 });
+
+/**
+ * USER PROFILE
+ */
+
+Route::get('user/profile','UserController@profile');
+
+/**
+ * LIMIT OF TWO ARTICLES REACHED
+ */
+Route::get('articles/limitreached','UserController@limitReached');
+
+/**
+ * SHOW BLOGGERS
+ */
+Route::get('user/bloggers','UserController@showBloggers');
+
+
+

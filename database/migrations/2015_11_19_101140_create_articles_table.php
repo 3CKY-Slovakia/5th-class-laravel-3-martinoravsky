@@ -22,11 +22,12 @@ class CreateArticlesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
+            $table->boolean('approved');
             $table->string('title');
             $table->string('video');
             $table->text('content');
             $table->text('description');
+            $table->boolean('approved');
 
             $table->timestamps();
             $table->softDeletes();

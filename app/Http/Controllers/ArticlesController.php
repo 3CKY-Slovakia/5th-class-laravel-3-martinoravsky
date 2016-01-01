@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
+use DB;
 class ArticlesController extends Controller
 {
 
@@ -18,7 +20,7 @@ class ArticlesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('articleOwner:', ['except' => ['index', 'show', 'create']]);
+        $this->middleware('articleOwner:', ['except' => ['index', 'show','unpublished','create','store','publish']]);
     }
 
     /**
@@ -45,6 +47,10 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
+    public function unpublished(){
+        return view('articles.unpublished');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,12 +67,15 @@ class ArticlesController extends Controller
         $article->content = $data['content'];
         $article->description = $data['description'];
         $article->user()->associate(Auth::user());
+        $article->approved = 0;
 
         if($article->save()){
             return redirect('/')->with('message', 'Your article was successfully created.');
         }else{
             return redirect()->back()->with('message', 'Your article was not created. Please, try it again.');
         }
+
+
     }
 
     /**
@@ -130,8 +139,24 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
+        $article->delete();
+        Mail::send('emails.article-deleted',['name'=> 'Martin'],function($message){
+            $message->to(Auth::user()->email)->subject('Zmazanie clanku');
+        });
+        return redirect('/');
     }
+
+    public function publish($id){
+        $article = Article::findOrFail($id);
+        $article->approved = 1;
+        $article->save();
+
+        Mail::send('emails.article-creation',['name'=> 'Martin'],function($message){
+            $message->to(Auth::user()->email)->subject('Vytvorenie clanku');
+        });
+        return redirect('article/unpublished');
+    }
+
 }

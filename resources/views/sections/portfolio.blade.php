@@ -41,7 +41,9 @@
 
     <!-- Portfolio Items -->
     <div id="blog-items" class="fullwidth">
+
         @foreach($articles as $article)
+            @if($article->approved == 1){
             <!-- Item -->
             <div class="cbp-item item design photography">
                 <!-- Item Image -->
@@ -91,8 +93,11 @@
                     </p>
                 </a>
             </div>
+            }
+            @endif
             <!-- End Item -->
         @endforeach
+
 
     </div>
     <!-- End Portfolio Items -->

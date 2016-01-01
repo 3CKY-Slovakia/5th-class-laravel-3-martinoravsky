@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => '3ckysoft@gmail.com', 'name' => 'STI Labs'],
+    'from' => ['address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME')],
 
     /*
     |--------------------------------------------------------------------------
