@@ -153,8 +153,10 @@ class ArticlesController extends Controller
         $article->approved = 1;
         $article->save();
 
-        Mail::send('emails.article-creation',['name'=> 'Martin'],function($message){
-            $message->to(Auth::user()->email)->subject('Vytvorenie clanku');
+        $article_id = array('idecko' => $article->id);
+        //dd($article_id);
+        Mail::send('emails.article-creation',$article_id,function($message) use ($article_id){
+            $message->to('martinoravskyjr@gmail.com')->subject('Vytvorenie clanku');
         });
         return redirect('article/unpublished');
     }
