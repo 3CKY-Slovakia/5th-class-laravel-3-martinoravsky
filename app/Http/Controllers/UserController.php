@@ -91,8 +91,8 @@ class UserController extends Controller
     }
 
     public function limitReached(){
-        return view('articles/limitreached');
-    }
+    return view('articles/limitreached');
+}
 
     public function showBloggers(){
 

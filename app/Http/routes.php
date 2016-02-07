@@ -79,7 +79,10 @@ Route::group(['prefix' => 'article'], function () {
         });
     });
 
-    Route::get('create','ArticlesController@create');
+    Route::group(['middleware' => ['number']], function() {
+        Route::get('create','ArticlesController@create');
+    });
+   // Route::get('create','ArticlesController@create');
     Route::post('store','ArticlesController@store');
 
     Route::post('update/{id}', 'ArticlesController@update');

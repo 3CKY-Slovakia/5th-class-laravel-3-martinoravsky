@@ -31,6 +31,14 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    {!! Form::open(array('url' => 'articles/create', 'id' => 'post_form', 'class' => 'smart-form' ))!!}
+                                    {!! Form::label('tags_label', 'Tags:') !!}
+                                    {!! Form::select('tags[]', $tags, null, ['multiple' => 'true']) !!}
+                                </div>
+                            </div>
+
                             <textarea class="summernote" name="content"></textarea>
 
                             <div class="form-group">
@@ -40,6 +48,8 @@
                                     </button>
                                 </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

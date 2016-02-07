@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use DB;
+use Input;
+
 class ArticlesController extends Controller
 {
 
@@ -21,6 +24,7 @@ class ArticlesController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
         $this->middleware('articleOwner:', ['except' => ['index', 'show','unpublished','create','store','publish']]);
+
     }
 
     /**
@@ -44,7 +48,10 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $tags = \App\Tag::lists('name');
+
+        return view('articles.create')->with('tags',$tags);
+
     }
 
     public function unpublished(){
@@ -69,7 +76,12 @@ class ArticlesController extends Controller
         $article->user()->associate(Auth::user());
         $article->approved = 0;
 
+        $tagy = Input::get('tags');
+
         if($article->save()){
+            foreach($tagy as $tag){
+                $article->tags()->attach($tag+1); //cislovanie od nuly..
+            }
             return redirect('/')->with('message', 'Your article was successfully created.');
         }else{
             return redirect()->back()->with('message', 'Your article was not created. Please, try it again.');
@@ -87,6 +99,7 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
+
 
         return view('articles.show', [
             'article' => $article

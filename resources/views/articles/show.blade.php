@@ -50,9 +50,14 @@
                             </li>
                             <!-- Tags -->
                             <li>
-                                <a href="#">Design</a>,
-                                <a href="#">Web</a>,
-                                <a href="#">Video</a>
+                                <ul>
+                                    @foreach ($article->tags as $tag)
+
+                                    <li>{{$tag->name}}</li>
+
+                                    @endforeach
+                                </ul>
+
                                 <i class="fa fa-user"></i>
                             </li>
                             <!-- Liked -->

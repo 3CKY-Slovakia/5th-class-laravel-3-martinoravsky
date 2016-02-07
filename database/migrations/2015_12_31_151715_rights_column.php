@@ -13,7 +13,7 @@ class RightsColumn extends Migration
     public function up()
     {
         Schema::table('users',function($table){
-           $table->string('rights');
+          // $table->string('rights');
         });
     }
 

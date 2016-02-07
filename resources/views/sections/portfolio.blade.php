@@ -45,7 +45,7 @@
         @foreach($articles as $article)
             @if($article->approved == 1){
             <!-- Item -->
-            <div class="cbp-item item design photography">
+            <div class="cbp-item item <?php echo implode(" ", $article->tags->lists('name')->toArray())?>">
                 <!-- Item Image -->
                 <div class="item-top">
                     <!-- Post Link -->

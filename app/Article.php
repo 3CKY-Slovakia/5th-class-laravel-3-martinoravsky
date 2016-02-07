@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use SoftDeletes;
+
 
     /**
      * The database table used by the model.
@@ -27,7 +27,7 @@ class Article extends Model
         'content'
     ];
 
-    protected $dates = ['deleted_at'];
+
 
     /**
      * Get the User associated with the given Article
@@ -37,5 +37,14 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * returns tags associated with given article
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 }
